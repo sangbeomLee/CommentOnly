@@ -14,6 +14,7 @@ class RankViewController: UIViewController {
     
     var networkManager = NetworkManager()
     var videoBrain: VideoBrain?
+    let searchVC = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +22,32 @@ class RankViewController: UIViewController {
         rankTableView.dataSource = self
         networkManager.delegate = self
         
+        // searchResult
+        searchVC.searchBar.delegate = self
+        self.navigationItem.titleView = searchVC.searchBar
+        searchVC.searchBar.placeholder = "유튜브 영상을 입력하세요"
+        searchVC.hidesNavigationBarDuringPresentation = false
+        
         networkManager.fetchPopularVideos()
     }
 
 
 }
 
+//MARK: - UISearchResult
+extension RankViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        print("cancle")
+    }
+}
+
+//MARK: - UITableView
 extension RankViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videoBrain?.count ?? 0
@@ -46,6 +67,7 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: - NetworkManager
 extension RankViewController: NetworkManagerDelegate {
     func didUpdateImageData(data: Data?, index: Int) {
         videoBrain?.setImage(imageData: data, index: index)

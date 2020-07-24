@@ -15,4 +15,5 @@ struct VideoModel {
     var description: String
     var date: String
     var thumbnailUrl: URL
+    var imageData: Data?
 }

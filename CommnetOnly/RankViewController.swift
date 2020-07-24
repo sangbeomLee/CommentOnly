@@ -41,12 +41,20 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 280
+    }
 }
 
 extension RankViewController: NetworkManagerDelegate {
+    func didUpdateImageData(data: Data?, index: Int) {
+        videoBrain?.setImage(imageData: data, index: index)
+        rankTableView.reloadData()
+    }
+    
     func didUpdateRankData(data: [VideoModel]) {
         videoBrain = VideoBrain(videos: data)
-        rankTableView.reloadData()
+        videoBrain?.getThumbnail(with: networkManager)
     }
     
     func didFailWithError(error: String) {

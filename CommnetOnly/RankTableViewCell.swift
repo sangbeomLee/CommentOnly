@@ -24,7 +24,10 @@ class RankTableViewCell: UITableViewCell {
         channelTitleLabel.text = video.channelTitle
         titleLabel.text = video.title
         subtitleLabel.text = video.description
-        thumbnailImageView.backgroundColor = .blue
+        if let imageData = video.imageData {
+            thumbnailImageView.image = UIImage(data: imageData)
+        }
+        
     }
 
 }

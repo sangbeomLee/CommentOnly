@@ -9,7 +9,7 @@ struct Thumbnails: Codable {
     var thumbnail: Thumbnail
     
     enum CodingKeys: String, CodingKey {
-        case thumbnail = "default"
+        case thumbnail = "medium"
     }
 }
 

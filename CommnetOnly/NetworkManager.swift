@@ -10,6 +10,7 @@ import Foundation
 
 protocol NetworkManagerDelegate {
     func didUpdateRankData(data: [VideoModel])
+    func didUpdateImageData(data: Data?, index: Int)
     func didFailWithError(error: String)
 }
 
@@ -17,6 +18,15 @@ struct NetworkManager {
     let baseUrl = "https://www.googleapis.com/youtube/v3"
     
     var delegate: NetworkManagerDelegate?
+    
+    func getImage(url: URL, index: Int) {
+        DispatchQueue.global().async {
+            let imageData = try? Data(contentsOf: url)
+            DispatchQueue.main.async {
+                self.delegate?.didUpdateImageData(data: imageData, index: index)
+            }
+        }
+    }
 
     func fetchPopularVideos() {
         let urlString = "\(baseUrl)/videos?regionCode=kr&chart=mostpopular&maxResults=10&part=snippet&key=\(APIKEY)"
@@ -37,11 +47,11 @@ struct NetworkManager {
             
             if let data = data {
                 let rankDatas = self.parseRankJSON(with: data)
+                
                 DispatchQueue.main.async {
                     self.delegate?.didUpdateRankData(data: rankDatas)
                 }
             }
-            
         }
         
         task.resume()

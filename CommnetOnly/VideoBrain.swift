@@ -19,7 +19,17 @@ class VideoBrain {
         self.videos = videos
     }
     
+    func setImage(imageData: Data?, index: Int) {
+        videos[index].imageData = imageData
+    }
+    
     func getVideo(index: Int) -> VideoModel {
         return videos[index]
+    }
+    
+    func getThumbnail(with networkManager: NetworkManager) {
+        videos.enumerated().forEach {
+            networkManager.getImage(url: $0.element.thumbnailUrl, index: $0.offset)
+        }
     }
 }

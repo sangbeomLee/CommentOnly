@@ -10,15 +10,21 @@ import UIKit
 
 class RankTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var channelTitleLabel: UILabel!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(with video: VideoModel) {
+        channelTitleLabel.text = video.channelTitle
+        titleLabel.text = video.title
+        subtitleLabel.text = video.description
+        thumbnailImageView.backgroundColor = .blue
     }
 
 }

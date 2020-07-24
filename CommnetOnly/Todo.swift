@@ -1,9 +1,10 @@
 /*
- 1. apikey = https://www.googleapis.com/youtube/v3/videos?chart=mostpopular&maxResults=10&key=AIzaSyB9KjHO7YpeiyC4hk9V8dJu9x1DrIf9SSc
+ 1. apikey = https://www.googleapis.com/youtube/v3/videos?regionCode=kr&chart=mostpopular&maxResults=10&part=snippet&key=AIzaSyB9KjHO7YpeiyC4hk9V8dJu9x1DrIf9SSc
  인기 동영상 + 10개 가져오고 + key
  
  
- 
+ 해야 하는 것
+ - 영상의 id값을 가지고 영상을 불러와 뿌리기
  
  
  

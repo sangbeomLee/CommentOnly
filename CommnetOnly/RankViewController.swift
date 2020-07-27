@@ -20,7 +20,7 @@ class RankViewController: UIViewController {
         super.viewDidLoad()
         rankTableView.delegate = self
         rankTableView.dataSource = self
-        networkManager.delegate = self
+        networkManager.rankDelegate = self
         
         // searchResult
         searchVC.searchBar.delegate = self
@@ -57,10 +57,11 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource {
             print("no CommentVC")
             return
         }
-        
-        self.navigationController?.pushViewController(commentVC, animated: true)
-        
-        
+        if let video = videoBrain?.getVideo(index: indexPath.row) {
+            commentVC.commentBrain = CommentBrain(video: video)
+            commentVC.networkManager = networkManager
+            self.navigationController?.pushViewController(commentVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,7 +79,7 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 //MARK: - NetworkManager
-extension RankViewController: NetworkManagerDelegate {
+extension RankViewController: NetworkManagerRankDelegate {
     func didUpdateImageData(data: Data?, index: Int) {
         videoBrain?.setImage(imageData: data, index: index)
         rankTableView.reloadData()

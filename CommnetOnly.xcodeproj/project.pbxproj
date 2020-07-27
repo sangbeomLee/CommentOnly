@@ -15,7 +15,7 @@
 		D32B1E8B24C838D600157D63 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B1E8A24C838D600157D63 /* RankTableViewCell.swift */; };
 		D32B1E8D24C8393300157D63 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B1E8C24C8393300157D63 /* RankViewController.swift */; };
 		D32B1E8F24C83A8100157D63 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B1E8E24C83A8100157D63 /* Constants.swift */; };
-		D35CDE9624C9BC6100D0D35D /* RankDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35CDE9524C9BC6100D0D35D /* RankDataModel.swift */; };
+		D35CDE9624C9BC6100D0D35D /* RankDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35CDE9524C9BC6100D0D35D /* RankDataModels.swift */; };
 		D35CDE9824CA8ADA00D0D35D /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35CDE9724CA8ADA00D0D35D /* VideoModel.swift */; };
 		D35CDE9A24CA9EF800D0D35D /* VideoBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35CDE9924CA9EF800D0D35D /* VideoBrain.swift */; };
 		D35CDE9E24CACCC600D0D35D /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35CDE9D24CACCC600D0D35D /* CommentTableViewCell.swift */; };
@@ -23,6 +23,9 @@
 		D3D7C0B024C97F560079DE81 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D7C0AF24C97F560079DE81 /* NetworkManager.swift */; };
 		D3D7C0B224C988E60079DE81 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D7C0B124C988E60079DE81 /* Todo.swift */; };
 		D3D7C0B424C989500079DE81 /* APIKEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D7C0B324C989500079DE81 /* APIKEY.swift */; };
+		D3FDB98F24CED09F00CFF396 /* CommentBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FDB98E24CED09F00CFF396 /* CommentBrain.swift */; };
+		D3FDB99324CEDCAB00CFF396 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FDB99224CEDCAB00CFF396 /* CommentModel.swift */; };
+		D3FDB99524CEDD3C00CFF396 /* CommentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FDB99424CEDD3C00CFF396 /* CommentDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +39,7 @@
 		D32B1E8A24C838D600157D63 /* RankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
 		D32B1E8C24C8393300157D63 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		D32B1E8E24C83A8100157D63 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D35CDE9524C9BC6100D0D35D /* RankDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDataModel.swift; sourceTree = "<group>"; };
+		D35CDE9524C9BC6100D0D35D /* RankDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDataModels.swift; sourceTree = "<group>"; };
 		D35CDE9724CA8ADA00D0D35D /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		D35CDE9924CA9EF800D0D35D /* VideoBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoBrain.swift; sourceTree = "<group>"; };
 		D35CDE9D24CACCC600D0D35D /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -44,6 +47,9 @@
 		D3D7C0AF24C97F560079DE81 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D3D7C0B124C988E60079DE81 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D3D7C0B324C989500079DE81 /* APIKEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKEY.swift; sourceTree = "<group>"; };
+		D3FDB98E24CED09F00CFF396 /* CommentBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBrain.swift; sourceTree = "<group>"; };
+		D3FDB99224CEDCAB00CFF396 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		D3FDB99424CEDD3C00CFF396 /* CommentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +105,11 @@
 			isa = PBXGroup;
 			children = (
 				D35CDE9924CA9EF800D0D35D /* VideoBrain.swift */,
-				D35CDE9524C9BC6100D0D35D /* RankDataModel.swift */,
+				D35CDE9524C9BC6100D0D35D /* RankDataModels.swift */,
 				D35CDE9724CA8ADA00D0D35D /* VideoModel.swift */,
+				D3FDB99424CEDD3C00CFF396 /* CommentDataModel.swift */,
+				D3FDB99224CEDCAB00CFF396 /* CommentModel.swift */,
+				D3FDB98E24CED09F00CFF396 /* CommentBrain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,11 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D35CDEA224CADCB300D0D35D /* CommentViewController.swift in Sources */,
-				D35CDE9624C9BC6100D0D35D /* RankDataModel.swift in Sources */,
+				D35CDE9624C9BC6100D0D35D /* RankDataModels.swift in Sources */,
 				D35CDE9A24CA9EF800D0D35D /* VideoBrain.swift in Sources */,
 				D3D7C0B224C988E60079DE81 /* Todo.swift in Sources */,
 				D3D7C0B024C97F560079DE81 /* NetworkManager.swift in Sources */,
 				D35CDE9824CA8ADA00D0D35D /* VideoModel.swift in Sources */,
+				D3FDB98F24CED09F00CFF396 /* CommentBrain.swift in Sources */,
+				D3FDB99324CEDCAB00CFF396 /* CommentModel.swift in Sources */,
 				D3D7C0B424C989500079DE81 /* APIKEY.swift in Sources */,
 				D32B1E8B24C838D600157D63 /* RankTableViewCell.swift in Sources */,
 				D32B1E7724C8352B00157D63 /* AppDelegate.swift in Sources */,
@@ -189,6 +200,7 @@
 				D32B1E8F24C83A8100157D63 /* Constants.swift in Sources */,
 				D32B1E8D24C8393300157D63 /* RankViewController.swift in Sources */,
 				D32B1E7924C8352B00157D63 /* SceneDelegate.swift in Sources */,
+				D3FDB99524CEDD3C00CFF396 /* CommentDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

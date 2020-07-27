@@ -31,7 +31,6 @@ class RankViewController: UIViewController {
         networkManager.fetchPopularVideos()
     }
 
-
 }
 
 //MARK: - UISearchResult
@@ -51,6 +50,17 @@ extension RankViewController: UISearchBarDelegate {
 extension RankViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videoBrain?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let commentVC = storyboard?.instantiateViewController(identifier: "CommentViewController") as? CommentViewController else {
+            print("no CommentVC")
+            return
+        }
+        
+        self.navigationController?.pushViewController(commentVC, animated: true)
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -19,15 +19,12 @@ class CommentBrain {
     func getComments(comments: [CommentModel]) {
         self.comments = comments
     }
-    
-    func getThumbnail(with networkManager: NetworkManager) {
-        comments?.enumerated().forEach {
-            networkManager.getCommentImage(url: $0.element.thumbnailUrl, index: $0.offset)
-        }
-    }
+
     func setImage(imageData: Data?, index: Int) {
         comments?[index].imageData = imageData
     }
     
-    
+    func sortLikeCount() {
+        comments?.sort{ $0.likeCount > $1.likeCount }
+    }
 }

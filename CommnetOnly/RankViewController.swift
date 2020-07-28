@@ -13,14 +13,19 @@ class RankViewController: UIViewController {
     @IBOutlet weak var rankTableView: UITableView!
     
     var networkManager = NetworkManager()
-    var videoBrain: VideoBrain?
+    var videoBrain: VideoBrain? {
+        didSet {
+            DispatchQueue.main.async {
+                self.rankTableView.reloadData()
+            }
+        }
+    }
     let searchVC = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         rankTableView.delegate = self
         rankTableView.dataSource = self
-        networkManager.rankDelegate = self
         
         // searchResult
         searchVC.searchBar.delegate = self
@@ -28,7 +33,9 @@ class RankViewController: UIViewController {
         searchVC.searchBar.placeholder = "유튜브 영상을 입력하세요"
         searchVC.hidesNavigationBarDuringPresentation = false
         
-        networkManager.fetchPopularVideos()
+        networkManager.getRankVideos { videos in
+            self.videoBrain = VideoBrain(videos: videos)
+        }
     }
 
 }
@@ -36,7 +43,6 @@ class RankViewController: UIViewController {
 //MARK: - UISearchResult
 extension RankViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         searchBar.endEditing(true)
     }
 
@@ -67,8 +73,14 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.IDENTIFIER_CELL_RANKTABLEVIEW, for: indexPath) as! RankTableViewCell
             
-        if let videoBrain = videoBrain {
-            cell.configure(with: videoBrain.getVideo(index: indexPath.row))
+        if let video = videoBrain?.getVideo(index: indexPath.row) {
+            if video.imageData == nil {
+                networkManager.getImage(url: video.thumbnailUrl, index: indexPath.row) {
+                    self.videoBrain?.videos?[indexPath.row].imageData = $0
+                    tableView.reloadData()
+                }
+            }
+            cell.configure(with: video)
         }
         
         return cell
@@ -76,23 +88,4 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 280
     }
-}
-
-//MARK: - NetworkManager
-extension RankViewController: NetworkManagerRankDelegate {
-    func didUpdateImageData(data: Data?, index: Int) {
-        videoBrain?.setImage(imageData: data, index: index)
-        rankTableView.reloadData()
-    }
-    
-    func didUpdateRankData(data: [VideoModel]) {
-        videoBrain = VideoBrain(videos: data)
-        videoBrain?.getThumbnail(with: networkManager)
-    }
-    
-    func didFailWithError(error: String) {
-        print(error)
-    }
-    
-    
 }

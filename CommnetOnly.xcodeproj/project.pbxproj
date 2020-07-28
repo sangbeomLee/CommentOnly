@@ -15,6 +15,7 @@
 		D32B1E8B24C838D600157D63 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B1E8A24C838D600157D63 /* RankTableViewCell.swift */; };
 		D32B1E8D24C8393300157D63 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B1E8C24C8393300157D63 /* RankViewController.swift */; };
 		D32B1E8F24C83A8100157D63 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B1E8E24C83A8100157D63 /* Constants.swift */; };
+		D356557324D0304B003E5257 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356557224D0304B003E5257 /* Extension.swift */; };
 		D35CDE9624C9BC6100D0D35D /* RankDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35CDE9524C9BC6100D0D35D /* RankDataModels.swift */; };
 		D35CDE9824CA8ADA00D0D35D /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35CDE9724CA8ADA00D0D35D /* VideoModel.swift */; };
 		D35CDE9A24CA9EF800D0D35D /* VideoBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35CDE9924CA9EF800D0D35D /* VideoBrain.swift */; };
@@ -39,6 +40,7 @@
 		D32B1E8A24C838D600157D63 /* RankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
 		D32B1E8C24C8393300157D63 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		D32B1E8E24C83A8100157D63 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D356557224D0304B003E5257 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D35CDE9524C9BC6100D0D35D /* RankDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDataModels.swift; sourceTree = "<group>"; };
 		D35CDE9724CA8ADA00D0D35D /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		D35CDE9924CA9EF800D0D35D /* VideoBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoBrain.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				D3D7C0AF24C97F560079DE81 /* NetworkManager.swift */,
 				D3FDB96D24CEAB0700CFF396 /* Model */,
 				D32B1E8E24C83A8100157D63 /* Constants.swift */,
+				D356557224D0304B003E5257 /* Extension.swift */,
 				D32B1E7C24C8352B00157D63 /* Main.storyboard */,
 				D3D7C0B324C989500079DE81 /* APIKEY.swift */,
 				D32B1E7F24C8352F00157D63 /* Assets.xcassets */,
@@ -195,6 +198,7 @@
 				D3FDB99324CEDCAB00CFF396 /* CommentModel.swift in Sources */,
 				D3D7C0B424C989500079DE81 /* APIKEY.swift in Sources */,
 				D32B1E8B24C838D600157D63 /* RankTableViewCell.swift in Sources */,
+				D356557324D0304B003E5257 /* Extension.swift in Sources */,
 				D32B1E7724C8352B00157D63 /* AppDelegate.swift in Sources */,
 				D35CDE9E24CACCC600D0D35D /* CommentTableViewCell.swift in Sources */,
 				D32B1E8F24C83A8100157D63 /* Constants.swift in Sources */,

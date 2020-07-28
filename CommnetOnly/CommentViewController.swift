@@ -23,9 +23,13 @@ class CommentViewController: UIViewController {
 
         commentTableView.delegate = self
         commentTableView.dataSource = self
-        networkManager?.commentDelegate = self
+        
         if let id = commentBrain?.video.id {
-            networkManager?.fetchVideoComments(id: id, order: "relevance")
+            networkManager?.getComments(id: id, order: "relevance", complition: { comments in
+                self.commentBrain?.getComments(comments: comments)
+                self.commentBrain?.sortLikeCount()
+                self.resizeTableView()
+            })
         }
         
     }
@@ -45,7 +49,11 @@ class CommentViewController: UIViewController {
     
     func resizeTableView() {
         DispatchQueue.main.async {
-            self.commentTableViewHeight.constant = self.commentTableView.contentSize.height
+            self.commentTableView.layoutIfNeeded()
+            self.commentTableView.reloadData()
+            
+            // 왜 contentSize.height 이 절반정도 뿐이 안나오는가?
+            self.commentTableViewHeight.constant = self.commentTableView.contentSize.height * 2
         }
     }
 
@@ -55,7 +63,6 @@ class CommentViewController: UIViewController {
 extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = commentBrain?.comments?.count ?? 0
-
         return count
     }
    
@@ -63,35 +70,25 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
         
         if let comment = commentBrain?.comments?[indexPath.row] {
+            if comment.imageData == nil {
+                networkManager?.getImage(url: comment.thumbnailUrl, index: indexPath.row, complition: {
+                    self.commentBrain?.comments?[indexPath.row].imageData = $0
+                    tableView.reloadData()
+                })
+            }
             cell.configure(comment: comment)
+            cell.dateLabel.text = "\(indexPath.row)"
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           return UITableView.automaticDimension
-       }
-       func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-           return UITableView.automaticDimension
-       }
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
-extension CommentViewController: NetworkManagerCommentDelegate {
-    func didUpdateImageData(data: Data?, index: Int) {
-        commentBrain?.setImage(imageData: data, index: index)
-        self.resizeTableView()
-        self.commentTableView.reloadData()
-    }
-    
-    func didFailWithError(error: String) {
-        print(error)
-    }
-    
-    func didUpdateCommentData(data: [CommentModel]) {
-        commentBrain?.getComments(comments: data)
-        commentBrain?.getThumbnail(with: networkManager!)
-    }
-    
-    
-}

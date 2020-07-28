@@ -27,7 +27,6 @@ class RankTableViewCell: UITableViewCell {
         if let imageData = video.imageData {
             thumbnailImageView.image = UIImage(data: imageData)
         }
-        
     }
 
 }

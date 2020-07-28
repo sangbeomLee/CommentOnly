@@ -11,6 +11,7 @@ import UIKit
 class CommentTableViewCell: UITableViewCell {
 
 
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var likeImageView: UIImageView!
@@ -18,7 +19,8 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        thumbnailImageView.layer.cornerRadius = thumbnailImageView.frame.width/2
+        thumbnailImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,6 +33,7 @@ class CommentTableViewCell: UITableViewCell {
         commentLabel.text = comment.text
         dateLabel.text = comment.date
         likeCountLabel.text = "\(comment.likeCount)"
+        nameLabel.text = comment.name
         if let data = comment.imageData {
             thumbnailImageView.image = UIImage(data: data)
         }

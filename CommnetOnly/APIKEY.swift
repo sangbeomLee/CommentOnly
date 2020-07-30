@@ -1,2 +1,0 @@
-let APIKEY = "AIzaSyB9KjHO7YpeiyC4hk9V8dJu9x1DrIf9SSc"
-
